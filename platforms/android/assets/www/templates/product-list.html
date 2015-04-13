@@ -1,0 +1,59 @@
+<ion-view style="" title="Product List">
+    <ion-tabs style="" class="tabs-striped tabs-icon-top tabs-background-balanced tabs-color-light">
+        <ion-tab style="" title="Product List" icon="ion-grid">
+            <ion-header-bar class="bar-balanced">
+                <h1 class="title">List of Products</h1>
+              </ion-header-bar>
+            <ion-content style="top: 22px" padding="false">
+
+                <ion-list>
+                    <div ng-repeat="group in groups">
+                      <ion-item class="item-stable"
+                                ng-click="toggleGroup(group)"
+                                ng-class="{active: isGroupShown(group)}">
+
+                                <i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>      
+                        &nbsp;
+                        Group {{group.name}}
+                        
+                        
+                      </ion-item>
+                      <ion-item class="item-accordion"
+                                ng-repeat="item in group.items"
+                                ng-show="isGroupShown(group)">
+                        {{item}}
+                      </ion-item>
+                    </div>
+                  </ion-list>
+            </ion-content>
+        </ion-tab>
+        <ion-tab style="" title="Product Cart" icon="ion-trash-a">
+                <ion-header-bar class="bar-balanced">
+                <h1 class="title">Cart</h1>
+              </ion-header-bar>
+            <ion-content style="top: 32px" class="has-header" padding="true">
+                <div style="" class="button-bar">
+                    <button style="" class="button button-stable button-block">Day</button>
+                    <button style="" class="button button-stable button-block">Week</button>
+                    <button style="" class="button button-stable button-block">Month</button>
+                </div>
+                <div style="" class="list card">
+                    <div class="item item-divider">Card</div>
+                    <div class="item item-body">
+                        <ion-list style="">
+                            <ion-item style="">Item 1</ion-item>
+                            <ion-item style="">Item 2</ion-item>
+                            <ion-item style="">Item 3</ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-tab>
+        <ion-tab style="" title="App Info" icon="ion-help-circled">
+            <ion-header-bar class="bar-balanced">
+                <h1 class="title">Info</h1>
+              </ion-header-bar>
+            <ion-content style="top: 22px" class="has-header" padding="true"></ion-content>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>
