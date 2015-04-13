@@ -16,27 +16,59 @@ angular.module('app', ['ionic', 'firebase'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+
   $stateProvider
-    
+
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html'
     })
-    
+
     .state('product_list', {
       url: '/product_list',
-      controller: 'MyCtrl',
       templateUrl: 'templates/product-list.html'
     })
-    ;  
+    ;
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('MyCtrl', function($scope, $firebaseObject) {
+.controller('MainCtrl', function($scope, $firebaseObject, $state, $ionicHistory) {
 
-  var usersRef = new Firebase('https://foodchooser.firebaseio.com');
+  var usersRef = new Firebase('https://foodchooser.firebaseio.com/users');
   $scope.data = $firebaseObject(usersRef)
   console.log($scope.data)
+
+    $scope.anonimLogin = function(){
+        usersRef.authAnonymously(
+            function userState(error, authData){
+                if (error) {
+                    console.log("Login Failed!", error);
+                } else {
+                    var userLoggedIn = {
+                        userInfo : {
+                            name: 'Anonym',
+                            uid: authData.uid
+                        }
+                    };
+                    console.log(userLoggedIn)
+                    usersRef.child(authData.uid).set(userLoggedIn);
+                    $state.go('product_list');
+                    $ionicHistory.clearHistory()
+                }
+                $ionicHistory.clearHistory()
+                console.log($ionicHistory.viewHistory())
+            });
+    };
+        console.log($ionicHistory.viewHistory())
+
+        $ionicHistory.clearHistory()
+    var authData = usersRef.getAuth();
+    if (authData) {
+        $state.go('product_list');
+        console.log("Authenticated user with uid:", authData.uid);
+    } else {
+        console.log("loggedout");
+    }
 
   $scope.groups = [];
   for (var i=0; i<10; i++) {
