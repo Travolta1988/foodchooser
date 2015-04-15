@@ -69,29 +69,21 @@ angular.module('app', ['ionic', 'firebase'])
         console.log("loggedout");
     }
 
-  var productsRef = new Firebase('https://foodchooser.firebaseio.com');
+  var productsRef = new Firebase('https://foodchooser.firebaseio.com/products');
    $scope.dataOfProducts = [];
     productsRef.once('value', function(nameSnapshot) {
         var products = nameSnapshot.val();
-        for (index in products){
-            $scope.dataOfProducts.push(products[index])
+        $scope.arr = [];
+        for(index in products){
+          items = {
+            name: index,
+            listOfProducts: products[index],
+          }
+          $scope.arr.push(items)
         }
-        console.log($scope.dataOfProducts)
-        $scope.groups = $scope.dataOfProducts[0];
-        console.log($scope.dataOfProducts[0].nameOfProduct)
+        console.log($scope.arr);
+        
     });
-
-  /*$scope.groups = [];
-  for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<5; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }*/
-
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;

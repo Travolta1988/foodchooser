@@ -7,21 +7,18 @@
             <ion-content style="top: 22px" padding="false">
 
                 <ion-list>
-                    <div ng-repeat="group in groups">
+                    <div ng-repeat="group in arr">
                       <ion-item class="item-stable"
                                 ng-click="toggleGroup(group)"
-                                ng-class="{active: isGroupShown(group)}">
-
+                                >
                                 <i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>      
                         &nbsp;
-                        {{group}} 
-                        
-                        
+                        {{group.name}} 
                       </ion-item>
                       <ion-item class="item-accordion"
-                                ng-repeat="item in group.items"
-                                ng-show="isGroupShown(group)">
-                        {{group}}
+                                ng-repeat="item in arr"
+                                >
+                        {{item}}
                       </ion-item>
                     </div>
                   </ion-list>
