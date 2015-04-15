@@ -32,7 +32,7 @@ angular.module('app', ['ionic', 'firebase'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('MainCtrl', function($scope, $firebaseObject, $state, $ionicHistory) {
+.controller('MainCtrl', function($scope, $firebaseObject, $firebaseArray, $state, $ionicHistory) {
 
   var usersRef = new Firebase('https://foodchooser.firebaseio.com/users');
   $scope.data = $firebaseObject(usersRef)
@@ -56,10 +56,9 @@ angular.module('app', ['ionic', 'firebase'])
                     $ionicHistory.clearHistory()
                 }
                 $ionicHistory.clearHistory()
-                console.log($ionicHistory.viewHistory())
             });
     };
-        console.log($ionicHistory.viewHistory())
+        
 
         $ionicHistory.clearHistory()
     var authData = usersRef.getAuth();
@@ -70,7 +69,19 @@ angular.module('app', ['ionic', 'firebase'])
         console.log("loggedout");
     }
 
-  $scope.groups = [];
+  var productsRef = new Firebase('https://foodchooser.firebaseio.com');
+   $scope.dataOfProducts = [];
+    productsRef.once('value', function(nameSnapshot) {
+        var products = nameSnapshot.val();
+        for (index in products){
+            $scope.dataOfProducts.push(products[index])
+        }
+        console.log($scope.dataOfProducts)
+        $scope.groups = $scope.dataOfProducts[0];
+        console.log($scope.dataOfProducts[0].nameOfProduct)
+    });
+
+  /*$scope.groups = [];
   for (var i=0; i<10; i++) {
     $scope.groups[i] = {
       name: i,
@@ -79,7 +90,7 @@ angular.module('app', ['ionic', 'firebase'])
     for (var j=0; j<5; j++) {
       $scope.groups[i].items.push(i + '-' + j);
     }
-  }
+  }*/
 
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
