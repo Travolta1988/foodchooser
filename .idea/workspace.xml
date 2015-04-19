@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04e9d37a-31d7-4fb7-acfb-dddde163c7d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/lib/main.css" afterPath="$PROJECT_DIR$/www/lib/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/product-list.html" afterPath="$PROJECT_DIR$/www/templates/product-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="04e9d37a-31d7-4fb7-acfb-dddde163c7d1" name="Default" comment="" />
     <ignored path="foodchooser.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

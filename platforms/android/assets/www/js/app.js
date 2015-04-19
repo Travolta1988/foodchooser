@@ -32,7 +32,7 @@ angular.module('app', ['ionic', 'firebase'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('MainCtrl', function($scope, $firebaseObject, $state, $ionicHistory) {
+.controller('MainCtrl', function($scope, $firebaseObject, $firebaseArray, $state, $ionicHistory) {
 
   var usersRef = new Firebase('https://foodchooser.firebaseio.com/users');
   $scope.data = $firebaseObject(usersRef)
@@ -50,18 +50,12 @@ angular.module('app', ['ionic', 'firebase'])
                             uid: authData.uid
                         }
                     };
-                    console.log(userLoggedIn)
+                    console.log(userLoggedIn);
                     usersRef.child(authData.uid).set(userLoggedIn);
                     $state.go('product_list');
-                    $ionicHistory.clearHistory()
                 }
-                $ionicHistory.clearHistory()
-                console.log($ionicHistory.viewHistory())
             });
     };
-        console.log($ionicHistory.viewHistory())
-
-        $ionicHistory.clearHistory()
     var authData = usersRef.getAuth();
     if (authData) {
         $state.go('product_list');
@@ -70,18 +64,28 @@ angular.module('app', ['ionic', 'firebase'])
         console.log("loggedout");
     }
 
-  $scope.groups = [];
-  for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
-    };
-    for (var j=0; j<5; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }
+  var productsRef = new Firebase('https://foodchooser.firebaseio.com/products');
+   $scope.dataOfProducts = [];
+    productsRef.once('value', function(nameSnapshot) {
+        var products = nameSnapshot.val();
+        $scope.arr = [];
+        for(index in products){
+          items = {
+            name: index,
+            listOfProducts: products[index]
+          }
+          $scope.arr.push(items)
+        }
+        console.log($scope.arr);
+        
+    });
 
+  $scope.addToCart = function(group, item){
+    console.log(item)
+      console.log(group.name)
+  };
   $scope.toggleGroup = function(group) {
+      console.log(group)
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
     } else {

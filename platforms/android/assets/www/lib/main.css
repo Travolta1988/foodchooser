@@ -1,0 +1,10 @@
+ion-content ion-list div.list {
+	padding-top: 22px;
+}
+
+img.product-icon {
+    left: 46px;
+    position: absolute;
+    top: 6px;
+    width: 40px;
+}

@@ -33,6 +33,7 @@
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/templates \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/js \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/cordova.js \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/lib \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/cordova_plugins.js \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/index.html \
@@ -46,6 +47,25 @@
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/templates/login.html \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/templates/product-list.html \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/js/app.js \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Bread.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Fish.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Sweets.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Meat.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Nuts.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Vegetables.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Confectionery.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Mushrooms.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Dried fruits.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Eggs.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Sausages.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Porridge.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Caviar.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Beans.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Canned food.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Fats and oils.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Fruits.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/img/Milk.png \
+/home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/lib/main.css \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/lib/ionic \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/lib/ionic/fonts \
 /home/dima/WORKSPACE/foodchooser/platforms/android/assets/www/lib/ionic/js \
