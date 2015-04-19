@@ -5,7 +5,6 @@
                 <h1 class="title">List of Products</h1>
               </ion-header-bar>
             <ion-content style="top: 22px" padding="false">
-
                 <ion-list>
                     <div ng-repeat="group in arr">
                       <ion-item class="item-stable"
@@ -17,13 +16,12 @@
                       </ion-item>
                       <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="item in group.listOfProducts">
                           <p>{{item.name}}</p>
+                          <p>Water: {{item.water}}</p>
                           <p>Protein: {{item.protein}}</p>
                           <p>Fat: {{item.fat}}</p>
                           <p>Carbohydrate: {{item.carbohydrate}}</p>
                           <p>kCalories: {{item.kilocalories}}</p>
-
-                          <button>Add to Food cart</button>
-
+                          <button ng-click="addToCart(group, item)">Add to Food cart</button>
                       </ion-item>
                     </div>
                   </ion-list>

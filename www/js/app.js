@@ -79,6 +79,11 @@ angular.module('app', ['ionic', 'firebase'])
         console.log($scope.arr);
         
     });
+
+  $scope.addToCart = function(group, item){
+    console.log(item)
+      console.log(group.name)
+  };
   $scope.toggleGroup = function(group) {
       console.log(group)
     if ($scope.isGroupShown(group)) {
