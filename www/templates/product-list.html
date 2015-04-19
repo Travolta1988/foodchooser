@@ -15,10 +15,14 @@
                         &nbsp;
                         {{group.name}} 
                       </ion-item>
-                      <ion-item class="item-accordion"
-                                ng-repeat="item in arr"
-                                >
-                        {{item}}
+                      <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="item in group.listOfProducts">
+                          <p>{{item.name}}</p>
+                          <p>Protein: {{item.protein}}</p>
+                          <p>Fet: {{item.fet}}</p>
+                          <p>Energy: {{item.energy}}</p>
+
+                          <button>Add to Food cart</button>
+
                       </ion-item>
                     </div>
                   </ion-list>

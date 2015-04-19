@@ -50,12 +50,10 @@ angular.module('app', ['ionic', 'firebase'])
                             uid: authData.uid
                         }
                     };
-                    console.log(userLoggedIn)
+                    console.log(userLoggedIn);
                     usersRef.child(authData.uid).set(userLoggedIn);
                     $state.go('product_list');
-                    $ionicHistory.clearHistory()
                 }
-                $ionicHistory.clearHistory()
             });
     };
         
@@ -77,7 +75,7 @@ angular.module('app', ['ionic', 'firebase'])
         for(index in products){
           items = {
             name: index,
-            listOfProducts: products[index],
+            listOfProducts: products[index]
           }
           $scope.arr.push(items)
         }
@@ -85,6 +83,7 @@ angular.module('app', ['ionic', 'firebase'])
         
     });
   $scope.toggleGroup = function(group) {
+      console.log(group)
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
     } else {
