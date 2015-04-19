@@ -10,8 +10,9 @@
                       <ion-item class="item-stable"
                                 ng-click="toggleGroup(group)"
                                 >
-                                <i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>      
-                        &nbsp;
+                                <i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+                          <img class="product-icon" ng-src="../img/{{group.name}}.png" alt="sdsds"/>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {{group.name}} 
                       </ion-item>
                       <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="item in group.listOfProducts">
