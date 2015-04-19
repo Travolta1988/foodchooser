@@ -15,6 +15,12 @@ angular.module('app', ['ionic', 'firebase'])
   });
 })
 
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.views.maxCache(5);
+    $ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
