@@ -56,9 +56,6 @@ angular.module('app', ['ionic', 'firebase'])
                 }
             });
     };
-        
-
-        $ionicHistory.clearHistory()
     var authData = usersRef.getAuth();
     if (authData) {
         $state.go('product_list');
