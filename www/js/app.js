@@ -40,6 +40,8 @@ angular.module('app', ['ionic', 'firebase'])
 
 .controller('MainCtrl', function($scope, $firebaseObject, $firebaseArray, $state, $ionicHistory) {
 
+
+  //Hidden Login of user. There is no standart login form. Only button "enter". 
   var usersRef = new Firebase('https://foodchooser.firebaseio.com/users');
   $scope.data = $firebaseObject(usersRef)
   console.log($scope.data)
@@ -70,6 +72,8 @@ angular.module('app', ['ionic', 'firebase'])
         console.log("loggedout");
     }
 
+
+  //displaying product collection on product list page  
   var productsRef = new Firebase('https://foodchooser.firebaseio.com/products');
    $scope.dataOfProducts = [];
     productsRef.once('value', function(nameSnapshot) {
@@ -86,10 +90,16 @@ angular.module('app', ['ionic', 'firebase'])
         
     });
 
+  //Adding user choise to DB for current user  
   $scope.addToCart = function(group, item){
-    console.log(item)
-      console.log(group.name)
+    var userChoice = {
+      "groupName" : group.name,
+      "choosenItem" : item
+    }
+    console.log(userChoice)
   };
+
+  //Accordion   
   $scope.toggleGroup = function(group) {
       console.log(group)
     if ($scope.isGroupShown(group)) {
