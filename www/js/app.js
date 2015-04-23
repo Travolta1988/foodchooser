@@ -64,14 +64,6 @@ angular.module('app', ['ionic', 'firebase'])
                 }
             });
     };
-    var authData = usersRef.getAuth();
-    if (authData) {
-        $state.go('product_list');
-        console.log("Authenticated user with uid:", authData.uid);
-    } else {
-        console.log("loggedout");
-    }
-
 
   //displaying product collection on product list page  
   var productsRef = new Firebase('https://foodchooser.firebaseio.com/products');
@@ -86,22 +78,51 @@ angular.module('app', ['ionic', 'firebase'])
           }
           $scope.arr.push(items)
         }
-        console.log($scope.arr);
-        
     });
 
   //Adding user choise to DB for current user  
-  $scope.addToCart = function(group, item){
-    var userChoice = {
-      "groupName" : group.name,
-      "choosenItem" : item
+    var authData = usersRef.getAuth();
+    if (authData) {
+        $state.go('product_list');
+        console.log("Authenticated user with uid:", authData.uid);
+    } else {
+        console.log("loggedout");
     }
-    console.log(userChoice)
+    var currentUser = authData.uid;
+
+  $scope.addToCart = function(group, item){
+    var group1 = group.name;
+    var userChoice = {
+        "groupName": group1,
+        "choosenItem": item
+    };
+    usersRef.child(currentUser).child('choosenItems').push(angular.fromJson(angular.toJson(userChoice)));
   };
+
+        var currentUserRef = new Firebase('https://foodchooser.firebaseio.com/users/');
+        $scope.currentUserData = $firebaseObject(currentUserRef);
+        var refreshChoosenItems = function(){
+            currentUserRef.child(currentUser).child('choosenItems').once('value', function(snap) {
+                var choosenProducts = snap.val();
+                $scope.array = [];
+                for(index in choosenProducts){
+                    items = {
+                        name: index,
+                        listOfProducts: choosenProducts[index]
+                    };
+                    $scope.array.push(items)
+                }
+            });
+        };
+
+        $('a').click(function(){
+            alert(2222)
+        })
+
+        refreshChoosenItems();
 
   //Accordion   
   $scope.toggleGroup = function(group) {
-      console.log(group)
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
     } else {

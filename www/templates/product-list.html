@@ -41,7 +41,7 @@
                   </ion-list>
             </ion-content>
         </ion-tab>
-        <ion-tab style="" title="Product Cart" icon="ion-trash-a">
+        <ion-tab class="product-cart" style="" title="Product Cart" icon="ion-trash-a">
                 <ion-header-bar class="bar-balanced">
                 <h1 class="title">Cart</h1>
               </ion-header-bar>
@@ -61,6 +61,43 @@
                         </ion-list>
                     </div>
                 </div>
+
+
+                <ion-list>
+                    <div ng-repeat="group in array">
+                        <ion-item class="item-stable"
+                                  ng-click="toggleGroup(group)"
+                                >
+                            <i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+                            <img class="product-icon" ng-src="img/{{group.name}}.png" alt="sdsds"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{group.name}}
+                        </ion-item>
+                        <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="item in group.listOfProducts">
+                            <table class="tg">
+                                <tr>
+                                    <th class="tg-s6z2" colspan="5">{{item.name}}, (100gr)</th>
+                                </tr>
+                                <tr>
+                                    <td class="tg-e3zv">Water<br></td>
+                                    <td class="tg-e3zv">Protein</td>
+                                    <td class="tg-e3zv">Fat</td>
+                                    <td class="tg-e3zv">Carbohydrate</td>
+                                    <td class="tg-e3zv">Energy</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-031e">{{item.water}}</td>
+                                    <td class="tg-031e">{{item.protein}}</td>
+                                    <td class="tg-031e">{{item.fat}}</td>
+                                    <td class="tg-031e">{{item.carbohydrate}}</td>
+                                    <td class="tg-031e">{{item.kilocalories}}</td>
+                                </tr>
+                            </table>
+                            <button ng-click="addToCart(group, item)">Add to Food cart</button>
+                        </ion-item>
+                    </div>
+                </ion-list>
+
             </ion-content>
         </ion-tab>
         <ion-tab style="" title="App Info" icon="ion-help-circled">
